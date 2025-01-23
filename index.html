@@ -116,7 +116,280 @@
     <div class="tease" id="tease"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const questions = [
+      // Question 1
+      {
+        question: "Why do you think I started talking to you?",
+        options: ["You're cute", "You're beautiful", "I was bored"],
+        responses: [
+          "Bingo! Smart guess. You're onto me. 😏",
+          "Confident answer! I see you know your worth. Respect. 😎",
+          "Wow, really? Do I seem that desperate? 🤨"
+        ],
+      },
+      // Question 2
+      {
+        question: "Do you think you're cute?",
+        options: ["Yes", "No"],
+        responses: [
+          "Finally, some honesty! I like that confidence. 🥳",
+          "Really? I think you are, and you can't fool me!"
+        ],
+      },
+      // Question 3
+      {
+        question: "What's your favorite K-Drama? (You can type anything!)",
+        options: ["Vincenzo"],
+        responses: [
+          "Ooh, Vincenzo! A solid pick. You've got good taste! 😎"
+        ],
+        allowOther: true
+      },
+      // Question 4
+      {
+        question: "What club do you think I support?",
+        options: ["Real Madrid", "Barcelona", "Manchester United"],
+        responses: [
+          "Yes, Hala Madrid! ⚽ Good guess!",
+          "Barca? Oh no, I expected better from you.",
+          "Close, but not quite! You gotta step up your football game."
+        ],
+      },
+      // Question 5
+      {
+        question: "Who do you think is my favorite player?",
+        options: ["Cristiano Ronaldo", "Lionel Messi", "Neymar"],
+        responses: [
+          "Correct! The GOAT himself, CR7. 🐐 Good job!",
+          "Messi? Really? Nah, I prefer the guy who doesn't ghost in finals. 😏",
+          "Neymar? Close, but I'm more into clutch players!"
+        ],
+      },
+      // Question 6
+      {
+        question: "What do you think about me?",
+        options: ["Annoying", "Fun", "Weird"],
+        responses: [
+          "Ouch! But I think you secretly enjoy it. 😉",
+          "Haha, I knew it! Fun is my middle name. 😎",
+          "Weird? I'll take it as a compliment. Weird people are the best people. 🥳"
+        ],
+      },
+      // Question 7
+      {
+        question: "What's your favorite Marvel character?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Not bad! But let's be real, Batman still rules. 🦇`
+      },
+      // Question 8
+      {
+        question: "If you could travel anywhere in the world, where would it be?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Good choice! But if you don't take me as your travel buddy, we're gonna have a problem. 😏`
+      },
+      // Question 9
+      {
+        question: "What's one food you could eat every day and never get bored?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `Ooh, ${answer}! Respect. I'll add that to my list of 'Ways to Bribe Marium.'`
+      },
+      // Question 10
+      {
+        question: "Do I annoy you?",
+        options: ["Yes", "No"],
+        responses: [
+          "Ouch! But let's be honest, you probably secretly enjoy it. 😉",
+          "Glad to know! Annoying you is harder than it looks."
+        ],
+      },
+      // Question 11
+      {
+        question: "If you had to pick one: Ice cream or chocolate?",
+        options: ["Ice cream", "Chocolate"],
+        responses: [
+          "Ice cream? Classic! Guess I'll have to share my scoops with you. 🍦",
+          "Chocolate? Nice! But don't expect me to share mine. 😏"
+        ],
+      },
+      // Question 12
+      {
+        question: "What's one thing you're really good at?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Impressive! Teach me your ways, master.`
+      },
+      // Question 13
+      {
+        question: "What's something you wish you could do but haven't learned yet?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Noted! Maybe I'll learn it first and show off. 😏`
+      },
+      // Question 14
+      {
+        question: "What's one word you'd use to describe me?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `'${answer}'? Hmm, interesting choice. I'll take it as a compliment.`
+      },
+      // Question 15
+      {
+        question: "Who's your all-time favorite actor or actress?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Great pick! But don't worry, you're still a star in my eyes.`
+      },
+      // Question 16
+      {
+        question: "Do you enjoy talking to me?",
+        options: ["Yes", "No"],
+        responses: [
+          "I knew it! I make your days brighter, don't I? 😏",
+          "Wow, okay. Then why do you reply so fast? Caught you. 🤨"
+        ],
+      },
+      // Question 17
+      {
+        question: "If you could have any superpower, what would it be?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Nice! But being uniquely you is already a superpower, right? 😏`
+      },
+      // Question 18
+      {
+        question: "What's one thing you're afraid of?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Don't worry, I've got your back. 🦸`
+      },
+      // Question 19
+      {
+        question: "If you could switch lives with someone for a day, who would it be?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: (answer) => `${answer}? Cool choice! But I bet they'd love to live a day in your shoes too.`
+      },
+      // Question 20
+      {
+        question: "If you could ask me anything, what would it be?",
+        options: [],
+        responses: [],
+        allowOther: true,
+        defaultResponse: () => `Haha, that's a good one! But you've got to answer my next question before I answer yours. 😉`
+      },
+    ];
+
+    const totalQuestions = questions.length;
+    document.getElementById('total-questions').textContent = totalQuestions;
+
+    let currentQuestionIndex = 0;
+    let skipTeaseCount = 0;
+
+    function showQuestion(index) {
+      const questionElem = document.getElementById('question');
+      const answersElem = document.getElementById('answers');
+      const responseElem = document.getElementById('response');
+      const nextButton = document.getElementById('next-button');
+      const currentCounter = document.getElementById('current-question');
+      const skipButton = document.getElementById('skip-button');
+      const teaseElem = document.getElementById('tease');
+      
+      teaseElem.textContent = '';
+      responseElem.textContent = '';
+      nextButton.classList.add('hidden');
+      currentCounter.textContent = index + 1;
+      const question = questions[index];
+      questionElem.textContent = question.question;
+      answersElem.innerHTML = '';
+
+      if (question.options.length > 0) {
+        question.options.forEach((option, i) => {
+          const button = document.createElement('button');
+          button.textContent = option;
+          button.onclick = () => {
+            const response = question.responses[i] || "Interesting choice!";
+            displayResponse(response);
+          };
+          answersElem.appendChild(button);
+        });
+      }
+
+      if (question.allowOther) {
+        const otherInput = document.createElement('input');
+        otherInput.type = 'text';
+        otherInput.placeholder = 'Your answer...';
+        const submitBtn = document.createElement('button');
+        submitBtn.textContent = 'Submit';
+        submitBtn.onclick = () => {
+          const answer = otherInput.value.trim();
+          if (answer) {
+            const response = question.defaultResponse
+              ? question.defaultResponse(answer)
+              : "Interesting answer!";
+            displayResponse(response);
+          }
+        };
+        answersElem.appendChild(otherInput);
+        answersElem.appendChild(submitBtn);
+      }
+
+      // Skip button functionality
+      skipButton.onclick = () => {
+        skipTeaseCount++;
+        if (skipTeaseCount === 1) {
+          teaseElem.textContent = "Skipping already? Can't handle the heat? 😏";
+        } else {
+          teaseElem.textContent = "Another skip? You're making this too easy! 😉";
+        }
+        nextQuestion();
+      };
+    }
+
+    function displayResponse(response) {
+      const answersElem = document.getElementById('answers');
+      const responseElem = document.getElementById('response');
+      const nextButton = document.getElementById('next-button');
+      answersElem.innerHTML = '';
+      responseElem.textContent = response;
+      nextButton.classList.remove('hidden');
+      nextButton.onclick = nextQuestion;
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < totalQuestions) {
+        showQuestion(currentQuestionIndex);
+      } else {
+        showCelebration();
+      }
+    }
+
+    function showCelebration() {
+      const container = document.querySelector('.container');
+      container.innerHTML = `
+        <div class="celebration">🎉 Thanks for playing, Marium! 🎉</div>
+        <p>You mean a lot to me, and I hope you had fun! 😊</p>
+        <p>So, how did you do? Fun game, right? Let me know what you think!</p>
+      `;
+    }
+
+    // Start the game
+    showQuestion(currentQuestionIndex);
+  </script>
 
 </body>
 </html>
