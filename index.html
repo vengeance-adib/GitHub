@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fun Q&A Game</title>
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(128, 0, 128, 0.2), rgba(0, 0, 255, 0.2)), url('https://source.unsplash.com/collection/190727/1920x1080');
+      background-size: cover;
+      backdrop-filter: blur(5px);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+    }
+    h1 {
+      font-size: 2em;
+      color: #4b0082;
+    }
+    .question-counter {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #4b0082;
+    }
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .answers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .answers button, .answers input {
+      margin: 5px;
+      padding: 15px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 80%;
+      max-width: 300px;
+    }
+    .answers button {
+      background-color: #6a5acd;
+      color: white;
+    }
+    .answers button:hover {
+      background-color: #483d8b;
+    }
+    .answers input[type="text"] {
+      border: 1px solid #ccc;
+      background-color: white;
+    }
+    .skip-button {
+      margin-top: 15px;
+      background-color: #9370db;
+      color: white;
+    }
+    .skip-button:hover {
+      background-color: #7b68ee;
+    }
+    .next-button {
+      margin-top: 15px;
+      background-color: #6a5acd;
+      color: white;
+    }
+    .next-button:hover {
+      background-color: #483d8b;
+    }
+    .tease {
+      font-style: italic;
+      margin-top: 10px;
+      color: #555;
+    }
+    .response {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .celebration {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #4b0082;
+    }
+    @media only screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .question {
+        font-size: 1.2em;
+      }
+      .answers button, .answers input {
+        font-size: 0.9em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hey, Marium! Let's Play a Q&A Game 😏</h1>
+    <div class="question-counter">Question <span id="current-question">1</span> of <span id="total-questions"></span></div>
+    <div class="question" id="question"></div>
+    <div class="answers" id="answers"></div>
+    <div class="response" id="response"></div>
+    <button class="next-button hidden" id="next-button">Next Question</button>
+    <button class="skip-button" id="skip-button">Skip the question using shorty power</button>
+    <div class="tease" id="tease"></div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
